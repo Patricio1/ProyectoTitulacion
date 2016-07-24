@@ -109,8 +109,8 @@
 
 
                <div class="row">
-  <div class="col-md-4"><asp:TextBox ID="TextBox10" runat="server" CssClass="form-control" placeholder="Cédula Estudiante.." autofocus></asp:TextBox></div>
-  <div class="col-md-4"><asp:Button ID="btnBuscarCedula" runat="server" Text="Buscar" CssClass="btn btn-primary" /></div>
+  <div class="col-md-4"><asp:TextBox ID="TextBox10" runat="server" CssClass="form-control" placeholder="Cédula Estudiante.." autofocus MaxLength="10"></asp:TextBox></div>
+  <div class="col-md-4"><asp:Button ID="btnBuscarCedula" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscarCedula_Click" /></div>
   <div class="col-md-4"><asp:Button ID="btnBusquedaPersonalizada" runat="server" Text="Búsqueda Personalizada" CssClass="btn btn-primary" /></div>
 </div>
 
@@ -138,7 +138,7 @@
   
       <table class="nav-justified" style=" border-collapse: separate;border-spacing:5px 15px">
           <tr >
-              <td class="auto-style1">
+              <td class="auto-style1">Nombre
               </td>
               <td style="width:600px">
                   <asp:TextBox ID="TextBox1" readonly="true" BackColor="White" placeholder="Nombre Estudiante" runat="server" CssClass="form-control"></asp:TextBox>
@@ -149,7 +149,7 @@
           </tr>
          
           <tr >
-              <td class="auto-style1">
+              <td class="auto-style1">Número Créditos
               </td>
               <td style="width:600px">
                   <asp:TextBox ID="TextBox2" readonly="true" BackColor="White" placeholder="Numero de Creditos Aprobados" runat="server" CssClass="form-control"></asp:TextBox>
@@ -160,7 +160,7 @@
           </tr>
        
           <tr >
-              <td class="auto-style1">
+              <td class="auto-style1">Carrera
               </td>
               <td style="width:600px">
                   <asp:TextBox ID="TextBox3" readonly="true" BackColor="White" placeholder="Nombre Carrera" runat="server" CssClass="form-control"></asp:TextBox>
@@ -241,7 +241,7 @@
                
               </td>
               <td style="width:600px;vertical-align:bottom">
-   <asp:Button ID="Button10" runat="server" Text="Guardar" CssClass="btn btn-primary" />
+   <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" />
               </td>
               <td>              
               </td>
@@ -272,8 +272,6 @@
              </Triggers>
     </asp:UpdatePanel> 
         
-    </form>
-   
 
 
      <!-- Bootstrap core JavaScript
@@ -316,6 +314,13 @@
          }
     </script>
     
-</body>
+         <asp:GridView ID="GridView1" runat="server">
+         </asp:GridView>
+        
+    </form>
+   
+
+
+     </body>
      
 </html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetEstudianteByCI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ci" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstudianteByCIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstudianteByCIResult" type="tns:Estudiante" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Estudiante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Carrera" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroCreditos" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditosMalla" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Idiomas" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CCFF" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Practicas" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vinculacion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValoresPagados" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEstudiantes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEstudiantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstudiantesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEstudianteByCISoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstudianteByCI" />
+  </wsdl:message>
+  <wsdl:message name="GetEstudianteByCISoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstudianteByCIResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstudiantesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstudiantes" />
+  </wsdl:message>
+  <wsdl:message name="GetEstudiantesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstudiantesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GetEstudianteByCI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener Estudiante a partir de su cedula</wsdl:documentation>
+      <wsdl:input message="tns:GetEstudianteByCISoapIn" />
+      <wsdl:output message="tns:GetEstudianteByCISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstudiantes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener el listado de todos los estudiantes</wsdl:documentation>
+      <wsdl:input message="tns:GetEstudiantesSoapIn" />
+      <wsdl:output message="tns:GetEstudiantesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstudianteByCI">
+      <soap:operation soapAction="http://tempuri.org/GetEstudianteByCI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstudiantes">
+      <soap:operation soapAction="http://tempuri.org/GetEstudiantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstudianteByCI">
+      <soap12:operation soapAction="http://tempuri.org/GetEstudianteByCI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstudiantes">
+      <soap12:operation soapAction="http://tempuri.org/GetEstudiantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://localhost:8035/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://localhost:8035/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
